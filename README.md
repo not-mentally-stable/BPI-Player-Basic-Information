@@ -2,6 +2,8 @@
 
 A lightweight client-side module that returns a table containing useful information about the local player, device, policy data, and session environment.
 
+[<img src="https://github.com/user-attachments/assets/880e1033-0ffd-4769-8c4c-29ed2a9f709d" width="420" alt="MainTuff_Icon">](https://github.com/user-attachments/assets/880e1033-0ffd-4769-8c4c-29ed2a9f709d)
+
 ## Installation
 
 Place the module in **ReplicatedStorage** (or any client-accessible container) and require it from a LocalScript:
