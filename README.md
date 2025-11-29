@@ -53,7 +53,7 @@ elseif PlayerData.Device == "Console" then
 elseif PlayerData.Device == "VR" then
     print("VR detected — enabling VR features.")
 else
-    warn("Unknown device type:", PlayerData.Device) -- there is also touchpad/Chrome support [PlayerData.Device == "Touchpad"] (a friend forced me to add support to them bc i didn't know chrome player's exist, and if your one i still think you aint real)
+    warn("Unknown device type:", PlayerData.Device) -- there is also touchlaptop/Chrome support [PlayerData.Device == "Touchlaptop"] (a friend forced me to add support to them bc i didn't know chrome player's exist, and if your one i still think you aint real)
 end
 ```
 
