@@ -1,7 +1,6 @@
 # BasicPlayerInfo
 
 A lightweight client-side module that returns a table containing useful information about the local player, device, policy data, and session environment.
-![Picsart_25-11-29_14-44-33-721](https://github.com/user-attachments/assets/4fccf764-3b2e-4e49-b20f-f710558cc8de)
 
 ## Installation
 
@@ -39,6 +38,40 @@ print(info.Ping)
 | `Verified`   | Whether the player has the verified badge. |
 | `TPData`     | Teleport data from `TeleportService`. |
 | `AppVersion` | Value returned by `version()` that shows the current player AppVersion (e.g.. 1.700.671) |
+
+## Examples
+
+```Luau
+local PlayerData = require(game:GetService("ReplicatedStorage").PlayerData)
+
+if PlayerData.Device == "Mobile" then
+    print("You're playing on Mobile! Adjusting UI...")
+elseif PlayerData.Device == "Pc" then
+    print("PC detected — enabling keyboard/mouse UI.")
+elseif PlayerData.Device == "Console" then
+    print("Console detected — enabling controller UI.")
+elseif PlayerData.Device == "VR" then
+    print("VR detected — enabling VR features.")
+else
+    warn("Unknown device type:", PlayerData.Device) -- there is also touchpad/Chrome support [PlayerData.Device == "Touchpad"] (a friend forced me to add support to them bc i didn't know chrome player's exist, and if your one i still think you aint real)
+end
+```
+
+```Luau
+local PlayerData = require(game:GetService("ReplicatedStorage"):WaitForChild("PlayerData"))
+
+print("=== Player Information ===")
+print("Name:", PlayerData.UserName)
+print("Display Name:", PlayerData.Name)
+print("UserId:", PlayerData.UserId)
+print("Account Age:", PlayerData.AccountAge, "days")
+print("Country:", PlayerData.Country)
+print("Ping (ms):", PlayerData.Ping)
+
+print("=== Device Info ===")
+print("Device Type:", PlayerData.Device)
+print("App Version:", PlayerData.AppVersion)
+```
 
 ## Notes
 - Must be required **on the client**.
