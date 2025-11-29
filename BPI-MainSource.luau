@@ -1,4 +1,3 @@
--- dont use this yet (testing)
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local PolicyService = game:GetService("PolicyService")
