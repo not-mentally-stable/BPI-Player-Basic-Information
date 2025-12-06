@@ -88,7 +88,7 @@ setmetatable(instance, {
 		return Players
 	end,
 	__tostring = function()
-		return LocalPlayer.ClassName
+		return LocalPlayer.Name
 	end
 })
 
