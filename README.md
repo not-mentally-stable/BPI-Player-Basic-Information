@@ -40,7 +40,7 @@ print(info:GetPing())
 | `Verified`   | Whether the player has the verified badge. |
 | `TPData`     | Teleport data from `TeleportService`. |
 | `AppVersion` | Value returned by `version()` that shows the current player AppVersion (e.g.. 1.700.671) |
-
+> also calling the module ``PlayerData()`` itself would return ``game:GetService("Players")`` and tostringing PlayerData like ``print`` will return ``LocalPlayer.Name``
 ## Examples
 
 ```Luau
