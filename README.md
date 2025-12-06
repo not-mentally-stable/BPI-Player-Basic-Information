@@ -22,7 +22,7 @@ print(info.Country)
 print(info:GetPing())
 ```
 
-## Returned Properties
+## Returned Properties&Methods
 
 | Property     | Description |
 |--------------|-------------|
