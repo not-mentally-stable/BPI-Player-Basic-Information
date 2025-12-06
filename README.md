@@ -34,7 +34,7 @@ print(info.Ping)
 | `Name`       | Player's display name. |
 | `UserName`   | Player's username. |
 | `Mouse`      | Player’s mouse object. |
-| `Ping`       | Network ping in milliseconds. |
+| `GetPing()`       | Network ping in milliseconds. |
 | `Policy`     | Policy table from `PolicyService`. |
 | `Country`    | Country/region code from `LocalizationService`. |
 | `Verified`   | Whether the player has the verified badge. |
@@ -68,7 +68,7 @@ print("Display Name:", PlayerData.Name)
 print("UserId:", PlayerData.UserId)
 print("Account Age:", PlayerData.AccountAge, "days")
 print("Country:", PlayerData.Country)
-print("Ping (ms):", PlayerData.Ping)
+print("Ping (ms):", PlayerData:GetPing())
 
 print("=== Device Info ===")
 print("Device Type:", PlayerData.Device)
