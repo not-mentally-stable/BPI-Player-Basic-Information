@@ -7,12 +7,13 @@ local TeleportService = game:GetService("TeleportService")
 
 local LocalPlayer = Players.LocalPlayer
 if not LocalPlayer then
-	error("BasicPlayerInfo can only be required on the client (duh..)")
+	error("BasicPlayerInfo can only be required on the client (duh...)")
 end
 
 local PlayerData = {}
 PlayerData.__index = PlayerData
 
+--// gets device type
 local function detectDevice() --// feel free to modify this
 	if UserInputService.VREnabled then
 		return "VR"
@@ -28,6 +29,7 @@ local function detectDevice() --// feel free to modify this
 	return "Unknown"
 end
 
+--// Safe policy fetch
 local function safePolicy()
 	local ok, result = pcall(function()
 		return PolicyService:GetPolicyInfoForPlayerAsync(LocalPlayer)
@@ -35,6 +37,7 @@ local function safePolicy()
 	return ok and result or {}
 end
 
+--// Safe country fetch
 local function safeCountry()
 	local ok, result = pcall(function()
 		return LocalizationService:GetCountryRegionForPlayerAsync(LocalPlayer)
@@ -42,34 +45,48 @@ local function safeCountry()
 	return ok and result or "Unknown"
 end
 
-local function getPing()
-	return math.floor(LocalPlayer:GetNetworkPing() * 1000)
-end
-
-local function GetTpData()
+--// Teleport data fetch
+local function getTeleportData()
 	local ok, result = pcall(function()
 		return TeleportService:GetLocalPlayerTeleportData(LocalPlayer)
 	end)
 	return ok and result or "Unknown"
-end 
+end
 
+--// Constructor and other
 function PlayerData.new()
-	local self = {}
+	local self = setmetatable({}, PlayerData)
+
+	self.Player = LocalPlayer
+	self.Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 	self.UserId = LocalPlayer.UserId
 	self.AccountAge = LocalPlayer.AccountAge
-	self.Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-	self.Player = LocalPlayer
+
 	self.Device = detectDevice()
 	self.Name = LocalPlayer.DisplayName
 	self.UserName = LocalPlayer.Name
 	self.Mouse = LocalPlayer:GetMouse()
-	self.Ping = getPing()
+
 	self.Policy = safePolicy()
 	self.Country = safeCountry()
 	self.Verified = LocalPlayer.HasVerifiedBadge
-	self.TPData = GetTpData()
+	self.TPData = getTeleportData()
 	self.AppVersion = version()
-	return setmetatable(self, PlayerData)
+
+	return self
 end
+
+function PlayerData:GetPing()
+	return math.floor(LocalPlayer:GetNetworkPing() * 1000)
+end
+
+setmetatable(PlayerData, {
+	__call = function()
+		return Players
+	end;
+	__tostring = function()
+	    return LocalPlayer.ClassName
+	end;
+})
 
 return PlayerData.new()
