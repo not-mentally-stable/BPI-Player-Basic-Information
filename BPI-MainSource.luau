@@ -80,13 +80,16 @@ function PlayerData:GetPing()
 	return math.floor(LocalPlayer:GetNetworkPing() * 1000)
 end
 
-setmetatable(PlayerData, {
+local instance = PlayerData.new()
+
+setmetatable(instance, {
+	__index = PlayerData,
 	__call = function()
 		return Players
-	end;
+	end,
 	__tostring = function()
-	    return LocalPlayer.ClassName
-	end;
+		return LocalPlayer.ClassName
+	end
 })
 
-return PlayerData.new()
+return instance
