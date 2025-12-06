@@ -19,7 +19,7 @@ local info = require(path.to.BasicPlayerInfo)
 
 print(info.Device)
 print(info.Country)
-print(info.Ping)
+print(info:GetPing())
 ```
 
 ## Returned Properties
