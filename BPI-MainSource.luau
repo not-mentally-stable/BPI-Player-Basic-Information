@@ -20,7 +20,7 @@ local function detectDevice() --// feel free to modify this
 	elseif GuiService:IsTenFootInterface() then
 		return "Console"
 	elseif UserInputService.TouchEnabled and UserInputService.KeyboardEnabled then
-		return "TouchLaptop"
+		return "TouchLaptop" --// there's some freaks on this world that use a keyboard on mobile (notably my friends) so dont expect this to be a TouchLaptop 100%
 	elseif UserInputService.TouchEnabled then
 		return "Mobile"
 	elseif UserInputService.KeyboardEnabled then
