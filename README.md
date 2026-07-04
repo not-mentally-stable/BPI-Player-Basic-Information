@@ -1,4 +1,4 @@
->[!WARNING]
+>[!NOTE]
 > this is mostly outdated ima recode this soon. only when luau releases [Luau Classes](https://github.com/luau-lang/rfcs/pull/191) so i can replace the slow metatable with optimized classes but feel free to still use this
 
 # BasicPlayerInfo
